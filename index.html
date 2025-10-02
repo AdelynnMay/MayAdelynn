@@ -463,8 +463,52 @@
 	</div>
 	
 	<script>
-document.querySelector(".menu_toggle").addEventListener("click", function() {
-    document.querySelector(".nav_menu").classList.toggle("show");
+document.addEventListener('DOMContentLoaded', () => {
+	const toggle = document.querySelector('.menu_toggle');
+	const menu = document.querySelector('.nav_menu');
+	
+	if (!toggle || !menu) return;
+	
+	toggle.setAttribute('aria-controls', 'primary-menu');
+	toggle.setAttribute('aria-expanded', 'false');
+	menu.id = 'primary-menu';
+	
+	const openMenu = () => {
+		menu.classList.add('show');
+		toggle.classList.add('open');
+		toggle.setAttribute('aria-expanded', 'true');
+		document.body.style.overflow = 'hidden';
+	};
+	
+	const closeMenu = () => {
+		menu.classList.remove('show');
+		toggle.classList.remove('open');
+		toggle.setAttribute('aria-expanded', 'false');
+		document.body.style.overflow = '';
+	};
+	
+	// toggle button on click
+	toggle.addEventListener('click', () => {
+		if (menu.classList.contains('show')) closeMenu();
+		else openMenu();
+	});
+	
+	// close when a menu option is clicked
+	menu.addEventListener('click', (e) => {
+		if (e.target.closest('a')) closeMenu();
+	});
+	
+	// close on escape
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') closeMenu();
+	});
+	
+	// close when clicking outside menu
+	document.addEventListener('click', (e) => {
+		if (!menu.classList.contains('show')) return;
+		const inside = e.target.closest('.nav_menu') || e.target.closest('.menu_toggle');
+		if (!inside) closeMenu();
+	});
 });
 		
 </script>
