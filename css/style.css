@@ -916,6 +916,9 @@ body {
 }
 
 .more_hats_text ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 16px;
 	list-style-type: none;
 	margin: 0px;
 	padding: 0px;
@@ -924,14 +927,14 @@ body {
 }
 
 .more_hats_text li {
-	float: left;
+	float: none;
 }
 
 .more_hats_text li a {
-	display: block;
+	display: inline-block;
 	color: black;
 	text-align: center;
-	padding: 16px;
+	padding: 10px 12px;
 	text-decoration: none;
 }
 
@@ -1719,8 +1722,19 @@ body {
 	height: auto;
 }
 
+.footer_content nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
 
 @media (max-width: 768px) {
+	.footer_content nav {
+		gap: 10px;
+		flex-direction: column;
+	}
+	
     .contact_info {
         gap: 15px;
     }
@@ -1935,7 +1949,15 @@ img {
   }
 }
 
+.logo-home-wrapper {
+	gap: 12px;
+}
+
 @media (max-width: 480px) {
+	.logo-home-wrapper {
+		padding-left: 10px;
+		gap: 8px;
+	}
   html, body {
     width: 100%;
     overflow-x: hidden;
