@@ -6,20 +6,14 @@
   box-sizing: border-box;
 }
 
-body {
-	margin: 0;
-	padding: 0;
-	background-color: #CDB496;
-	padding-top: 128px;
-}
-
 main {
-	padding-top: 128px;
+	padding-top: var(--header-h);
 	flex: 1 0 auto;
 }
 
-[id] {
-  scroll-margin-top: 140px;
+[id],
+section {
+  scroll-margin-top: var(--header-h);
 }
 
 html {
@@ -39,10 +33,6 @@ body {
     overflow-x: hidden;
 }
 
-section {
-	scroll-margin-top: 140px;
-}
-
 img {
     max-width: 100%;
     height: auto;
@@ -55,6 +45,10 @@ footer {
 
 /* default desktop menu */
 :root { --header-h: 128px; }
+
+@media (max-width: 480px) {
+	:root { --header-h: 94px; }
+}
 
 .container {
   width: 100%;
@@ -329,10 +323,6 @@ h4 {
     overflow-x: hidden;
     margin: 0;
   }
-	
-	main {
-		padding-top: 94px !important;
-	}
 
   .container,
   .main_content,
@@ -400,7 +390,6 @@ h4 {
     box-sizing: border-box;
   }
 	
-  :root { --header-h: 94px; }
 }
 
 p {
@@ -420,12 +409,6 @@ p {
 	line-height: 1.6;
 }
 
-body {
-	margin: 0;
-	padding: 0;
-	background-color: #CDB496;
-}
-
 .hat_logo {
 	float: left;
 	margin-left: 10%;
@@ -437,12 +420,10 @@ body {
 	margin-top: 60px;
 }
 
-
-
 .nav-container {
 	width: 100%;
 	margin: 0 auto;
-	height: 128px;
+	height: var(--header-h);
 }
 
 .navbar {
@@ -453,7 +434,7 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #152F57;
-  height: 128px;
+  height: var(--header-h);
   width: 100%;
   max-width: 100%;
   padding: 0 20px;
@@ -542,7 +523,7 @@ body {
   .nav_menu {
   display: none;
   position: absolute;
-  top: 128px;
+  top: var(--header-h);
   left: 0;
   right: 0;
   width: 100%;
@@ -556,7 +537,7 @@ body {
   list-style: none;
   padding: 2rem 16px;
 	  
-  max-height: calc(100vh - var(--header-h));
+  max-height: calc(100dvh - var(--header-h));
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -1935,15 +1916,11 @@ img {
 }
 
 @media (max-width: 480px) {
-  main {
-    padding-top: 94px;
-  }
 
   .navbar {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 94px;
     flex-wrap: wrap;
     padding: 0 10px;
   }
@@ -2026,5 +2003,4 @@ img {
     height: auto;
   }
 	
-	:root { --header-h: 94px; }
 }
