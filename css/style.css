@@ -484,6 +484,7 @@ p {
 	flex-wrap: wrap;
     list-style: none;
     gap: 15px;
+	bottom: 0;
     padding: 0;
 }
 
@@ -526,10 +527,11 @@ p {
 
   .nav_menu {
   display: none;
-  position: absolute;
+  position: fixed;
   top: var(--header-h);
   left: 0;
   right: 0;
+  bottom: 0;
   width: 100%;
   background-color: #213B64;
   z-index: 9999;
@@ -540,19 +542,18 @@ p {
   margin: 0 !important;
   list-style: none;
   padding: 2rem 16px;
+  padding-bottom: max(env(safe-area-inset-bottom), 32px);
 	  
-  max-height: calc(100dvh - var(--header-h));
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-  padding-bottom: env(safe-area-inset-bottom, 16px);
 }
 	
 .nav_menu::after {
   content: "";
   display: block;
-  height: 2rem;
+  height: 2.5rem;
 }
 	
   .nav_menu.show {

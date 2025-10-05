@@ -539,6 +539,24 @@ document.querySelectorAll('.nav_menu a[href^="#"]').forEach(a => {
 });
 </script>
 	<script>
+		(() => {
+		const menu = document.querySelector('.nav_menu');
+  		if (!menu) return;
+
+		  const getHeaderH = () =>
+			parseInt(getComputedStyle(document.documentElement)
+			  .getPropertyValue('--header-h')) || 0;
+		
+		const setMenuHeight = () => {
+			const vv = window.visualViewport?.height || window.innerHeight;
+		};
+		
+		setMenuHeight();
+		window.addEventListener('resize', setMenuHeight);
+		window.visualViewport?.addEventListener('resize', setMenuHeight);
+			})();
+	</script>
+	<script>
 		document.addEventListener('DOMContentLoaded', function () {
   const toggleButtons = document.querySelectorAll('.show_dropdown_button');
 
