@@ -16,6 +16,10 @@ section {
   scroll-margin-top: var(--header-h);
 }
 
+:target { 
+	scroll-margin-top: var(--header-h); 
+}
+
 html {
 	scroll-behavior: smooth;
 	height: 100%;

@@ -14,7 +14,7 @@
 		
 		<div class="navbar"> 
 			
-			<div id="nav-container">
+			<div class="nav-container">
 			
 			<img class="hat_logo" src="icons/May_Adelynn_HHLogo-01_2.png" width="124" height="124" alt=""/>
 			<img class="bag_icon" src="icons/bag_icon.png" width="55" height="55" alt=""/> 
@@ -511,6 +511,32 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 });
 		
+</script>
+	<script>
+document.querySelectorAll('.nav_menu a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    e.preventDefault();
+
+    // Close the mobile menu
+    document.querySelector('.nav_menu')?.classList.remove('show');
+    document.querySelector('.menu_toggle')?.classList.remove('hide');
+    document.querySelector('.menu_close')?.classList.remove('show');
+
+    // Scroll with offset = CSS var(--header-h)
+    const headerH = parseInt(getComputedStyle(document.documentElement)
+                    .getPropertyValue('--header-h')) || 0;
+
+    // give the menu a tick to collapse before measuring/scrolling (mobile Safari)
+    setTimeout(() => {
+      const y = target.getBoundingClientRect().top + window.scrollY - headerH;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }, 0);
+  });
+});
 </script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
