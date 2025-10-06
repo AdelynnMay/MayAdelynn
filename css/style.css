@@ -50,10 +50,6 @@ footer {
 /* default desktop menu */
 :root { --header-h: 128px; }
 
-@media (max-width: 480px) {
-	:root { --header-h: 94px; }
-}
-
 .container {
   width: 100%;
   max-width: 100%;
@@ -204,18 +200,6 @@ h4 {
     }
 }
 
-@media (max-width: 768px) {
-  .australian_products ul,
-  .fedora_felt_products ul,
-  .fedora_straw_products ul,
-  .caps_products ul,
-  .western_felt_products ul,
-  .western_straw_products ul,
-  .panama_products ul {
-    grid-template-columns: 1fr !important;
-  }
-}
-
 @media (max-width: 600px) {
     .hero_header {
         font-size: 1.5rem;
@@ -318,82 +302,6 @@ h4 {
     display: block;
     padding: 10px;
   }
-}
-
-@media (max-width: 375px) {
-  html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    margin: 0;
-  }
-
-  .container,
-  .main_content,
-  .more_hats,
-  .abt_heritage_hats,
-  .hat_care_tips,
-  .restoration_services,
-  .event_and_convention_services,
-  .contact_us,
-  .footer_content,
-  .navbar,
-  footer,
-  header {
-    width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  .hero_header,
-  .hero_intro {
-    text-align: center;
-    word-break: break-word;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .nav_menu li {
-    white-space: normal;
-    text-align: center;
-    width: 100%;
-  }
-
-  .nav_menu {
-    width: 100%;
-    padding: 0;
-  }
-
-  .nav_menu a {
-    padding: 8px 12px;
-  }
-
-  .hat_logo,
-  .bag_icon {
-    width: 35px;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-  }
-
-  .australian_products ul,
-  .fedora_felt_products ul,
-  .fedora_straw_products ul,
-  .caps_products ul,
-  .western_felt_products ul,
-  .western_straw_products ul,
-  .panama_products ul {
-    display: grid;
-    grid-template-columns: 1fr !important;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-	
 }
 
 p {
@@ -633,6 +541,181 @@ p {
   }
 }
 
+@media (max-width: 768px) {
+  /* Header height for this range */
+  :root { --header-h: 104px; }
+
+  html, body { overflow-x: hidden; }
+
+  .container,
+  .navbar,
+  .main_content,
+  .more_hats,
+  .abt_heritage_hats,
+  .hat_care_tips,
+  .restoration_services,
+  .event_and_convention_services,
+  .contact_us,
+  .footer_content {
+    width: 100%;
+    max-width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+
+  .navbar {
+    height: var(--header-h);
+    padding: 0 12px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Logo & bag icons */
+  .hat_logo, .bag_icon {
+    width: 48px; height: auto;
+    margin: 0; float: none; display: inline-block;
+  }
+
+  /* Menu button placement */
+  .menu_toggle { top: 24px; right: 16px; }
+
+  /* Overlay menu: full viewport minus header, scrollable */
+  .nav_menu {
+    position: fixed;
+    top: var(--header-h);
+    left: 0; right: 0; bottom: 0;
+    width: 100%;
+    background-color: #213B64;
+    display: none;           
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    list-style: none;
+    margin: 0 !important;
+    padding: 2rem 16px;
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding-bottom: max(env(safe-area-inset-bottom), 32px);
+  }
+  .nav_menu.show { display: flex; }
+  .nav_menu::after { content: ""; display: block; height: 2.5rem; } /* spacer so last item is tappable */
+
+  .nav_menu li { width: 100%; margin: 1rem 0; text-align: center; }
+  .nav_menu a {
+    display: block;
+    padding: 12px 16px;
+    line-height: 1.4;
+    white-space: normal;
+    word-break: break-word;
+    hyphens: auto;
+    touch-action: pan-y;
+  }
+
+  /* Product grids collapse to 1 column */
+  .australian_products ul,
+  .fedora_felt_products ul,
+  .fedora_straw_products ul,
+  .caps_products ul,
+  .western_felt_products ul,
+  .western_straw_products ul,
+  .panama_products ul {
+    display: grid;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Card/content tweaks */
+  .hero_header { font-size: 2rem; }
+  .hero_intro { font-size: 1.1rem; max-width: 90%; }
+  .abt_heritage_hats,
+  .hat_care_tips { flex-direction: column; text-align: left; }
+  .abt_heritage_hats_image,
+  .hat_stand_image,
+  .hats_on_wall_image,
+  .hat_straw_image { width: 80%; max-width: 300px; }
+  .restoration_services_text,
+  .event_and_convention_services_text { max-width: 90%; }
+
+  /* Footer nav stack */
+  .footer_content { flex-direction: column; text-align: center; }
+  .footer_content nav { gap: 10px; flex-direction: column; }
+  .footer_content nav ul { flex-direction: column; gap: 10px; }
+}
+
+@media (max-width: 480px) {
+  /* Phone header height */
+  :root { --header-h: 94px; }
+
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    height: var(--header-h);
+    padding: 0 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hat_logo, .bag_icon { width: 48px; height: 48px; margin: 0; float: none; display: inline; }
+  .menu_toggle { top: 18px; right: 12px; }
+
+  .nav_menu {
+    top: var(--header-h);
+    max-height: calc(100dvh - var(--header-h));
+    padding: 1.25rem 14px;
+    padding-bottom: max(env(safe-area-inset-bottom), 32px);
+  }
+  .nav_menu::after { height: 2.5rem; }
+
+  /* Make all sections full-width & boxed */
+  .container,
+  .main_content,
+  .more_hats,
+  .abt_heritage_hats,
+  .hat_care_tips,
+  .restoration_services,
+  .event_and_convention_services,
+  .contact_us,
+  .footer_content {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+
+  /* Single-column product grids */
+  .australian_products ul,
+  .fedora_felt_products ul,
+  .fedora_straw_products ul,
+  .caps_products ul,
+  .western_felt_products ul,
+  .western_straw_products ul,
+  .panama_products ul {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Typography & spacing tweaks */
+  .hero_header { font-size: 1.5rem; text-align: center; }
+  .hero_intro  { font-size: 1rem; text-align: center; padding: 10px; }
+  .nav_menu a  { padding: 10px 12px; }
+
+  /* Keep hero image snug under the fixed header */
+  img.hero_image { margin-top: 0; display: block; }
+}
+
 .navbar .hat_logo,
 .navbar .bag_icon,
 .navbar .menu_toggle,
@@ -732,12 +815,12 @@ p {
 }
 
 .show_dropdown_button::after {
-  content: '\25BC'; /* ▼ Down arrow */
+  content: '\25BC'; /* Down arrow */
   margin-left: 0.5em;
 }
 
 .show_dropdown_button.expanded::after {
-  content: '\25B2'; /* ▲ Up arrow */
+  content: '\25B2'; /* Up arrow */
 }
 
 .australian_hats.expanded {
@@ -822,12 +905,6 @@ p {
   text-align: center;
 }
 
-@media (max-width: 768px) {
-	.australian_hats ul {
-		grid-template-columns: 1fr;
-	}
-}
-
 .australian_products li a {
 	display: block;
 	color: #000000;
@@ -882,15 +959,6 @@ p {
 
 .go_back_home:hover {
   background-color: rgba(255, 255, 255, 0.2);
-}
-
-
-@media (max-width: 768px) {
-  .australian_category_header {
-    text-align: left;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 }
 
 .add_to_bag_button {
@@ -996,12 +1064,6 @@ p {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   text-align: center;
-}
-
-@media (max-width: 768px) {
-    .fedora_felt_products ul {
-        grid-template-columns: 1fr;
-    }
 }
 
 .fedora_felt_products li a {
@@ -1124,12 +1186,6 @@ p {
   text-align: center;
 }
 
-@media (max-width: 768px) {
-	.caps_products li {
-		grid-template-columns: 1fr;
-	}
-}
-
 .caps_products li a {
 	display: block;
 	color: #000000;
@@ -1188,12 +1244,6 @@ p {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   text-align: center;
-}
-
-@media (max-width: 768px) {
-	.western_felt_products li {
-		grid-template-columns: 1fr;
-	}
 }
 
 .western_felt_products li a {
@@ -1256,12 +1306,6 @@ p {
   text-align: center;
 }
 
-@media (max-width: 768px) {
-	.western_straw_products li {
-		grid-template-columns: 1fr;
-	}
-}
-
 .western_straw_products li a {
 	display: block;
 	color: #000000;
@@ -1322,12 +1366,6 @@ p {
   text-align: center;
 }
 
-@media (max-width: 768px) {
-	.panama_products li {
-		grid-template-columns: 1fr;
-	}
-}
-
 .panama_products li a {
 	display: block;
 	color: #000000;
@@ -1385,26 +1423,6 @@ p {
 	flex: 2;
 }
 
-@media (max-width: 768px) {
-    .abt_heritage_hats {
-        flex-direction: column;
-        text-align: left;
-    }
-	
-	.abt_heritage_hats_text {
-		text-align: left;
-	}
-
-    .abt_heritage_hats_image {
-        width: 80%;
-        max-width: 300px;
-    }
-
-    .abt_heritage_hats p {
-        max-width: 90%;
-    }
-}
-
 .hat_care_tips {
 	display: flex;
 	flex-wrap: wrap;
@@ -1460,32 +1478,6 @@ p {
 	line-height: 1.6;
 	max-width: 780px;
 	flex: 2;
-}
-
-@media (max-width: 768px) {
-    .hat_care_tips {
-        flex-direction: column;
-        text-align: left;
-    }
-	
-	.hats_on_wall_image {
-        width: 80%;
-        max-width: 300px;
-    }
-
-    .hat_stand_image {
-        width: 80%;
-        max-width: 300px;
-    }
-	
-	.hat_straw_image {
-        width: 80%;
-        max-width: 300px;
-    }
-
-    .hat_care_tips p {
-        max-width: 90%;
-    }
 }
 
 .restoration_services {
@@ -1629,25 +1621,6 @@ p {
 	font-family: "lunaisma", sans-serif;
 }
 
-@media (max-width: 768px) {
-    .restoration_services {
-        text-align: center;
-    }
-
-    .restoration_services_text {
-        max-width: 90%;
-    }
-
-    .service_pricing {
-        width: 90%;
-        max-width: 460px;
-    }
-
-    .slideshow-container {
-        max-width: 100%;
-    }
-}
-
 .contact_us {
     background-color: #E6D7C7;
     padding: 15px;
@@ -1743,32 +1716,6 @@ p {
 	justify-content: center;
 }
 
-@media (max-width: 768px) {
-	.footer_content nav {
-		gap: 10px;
-		flex-direction: column;
-	}
-	
-    .contact_info {
-        gap: 15px;
-    }
-
-    .contact_section {
-        flex-direction: row;
-        align-items: flex-start;
-        text-align: left;
-    }
-
-    .contact_icon {
-        margin-bottom: 0;
-		margin-right: 15px;
-    }
-
-    .contact_section ul {
-        text-align: left;
-    }
-}
-
 .event_and_convention_services {
 	background-color: #E6D7C7;
 	padding-top: 10px;
@@ -1811,17 +1758,6 @@ p {
     font-size: 1.125rem;
     line-height: 1.6;
     margin-bottom: 15px;
-}
-
-
-@media (max-width: 768px) {
-    .event_and_convention_services {
-        text-align: center;
-    }
-
-    .event_and_convention_services_text {
-        max-width: 90%;
-    }
 }
 
 /* Lists */
@@ -1908,70 +1844,9 @@ img {
   display: none;
 }
 
-@media (max-width: 768px) {
-    .footer_content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer_content nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-
-  .navbar {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0 10px;
-  }
-	
-	.nav_icon_row {
-	display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 100px;
-    margin: 10px 0 0 10px;
-	}
-
-  .hat_logo, .bag_icon {
-    width: 48px;
-    height: 48px;
-    margin: 0;
-    float: none;
-    display: inline;
-  }
-	
-  img.hero_image {
-  margin-top: 0;
-  display: block;
-}
-
-  .navbar ul {
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
-}
-
 .logo-home-wrapper {
 	gap: 12px;
 }
-
-@media (max-width: 480px) {
-	.logo-home-wrapper {
-		padding-left: 10px;
-		gap: 8px;
-	}
-  html, body {
-    width: 100%;
-    overflow-x: hidden;
-  }
 
   .container,
   .main_content,
